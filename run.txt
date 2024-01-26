@@ -1,0 +1,1 @@
+ SET DEBUG=assignment-10:* & npm start 

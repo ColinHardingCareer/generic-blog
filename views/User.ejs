@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <style>
+    input[type=text], select, textarea{
+      resize: both;
+    }
+    form {
+      display: inline-block; 
+    }
+  </style>
+  <body>
+    <h1 id = username><%= title %></h1>
+
+
+
+    <form action = "/blog/list" method = "POST">
+      <button type="submit" style="margin:20px">Return to list of bloggers</button>
+    </form>
+
+    <form>
+      <a href = "./login">
+        <button type="button">Logout and return to home page</button>
+
+      </a>
+    </form>
+
+    <ul>   
+   <%
+    let username = user
+    let entriesList = entriesJS
+   
+
+    if(entriesList.length != 0){
+      for(let e of entriesList){
+        
+      %>
+        <li> <%= e%></li>
+      <%
+        }
+    }
+   %>
+  </ul>
+
+  <%
+    if(title == username){
+  %>
+  <form onsubmit = "post()" action="/blog/username" method="POST">
+    <input id = user type="hidden" name="user" value = "">
+    <label for="entry">Enter a blog entry:</label><br>
+    <textarea type="text" id="entry" name="entry"></textarea><br>
+    <input type="submit" value="Submit Entry">
+  </form>
+<% } %>
+
+
+  <script>
+   
+  
+    function post(e){
+      
+      document.getElementById('user').value = document.getElementById('username').innerText
+      document.getElementById('entry').value = new Date().toLocaleString()+" -- "+document.getElementById('entry').value
+      e.target.parentNode.parentNode.submit()
+    }
+  
+  
+  </script>
+  
+
+  </body>
+</html>

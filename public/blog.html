@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <title>
+        Generic Unsafe Blog Login
+    </title>
+    <body>
+        <h1>Generic Unsafe Blog Login</h1>
+
+        <form  action="/blog/list" method="POST">
+            <label for="Username">Username:</label><br>
+            <input type="text" id="Username" name="Username"><br>
+            <button id = btn type="button" value="Login" >Login</button>
+        </form>
+    </body>
+
+    <script>
+   
+   const btn = document.getElementById('btn');
+    btn.onclick = post
+
+        function post(e){
+          console.log(e.target.parentNode)
+          if(document.getElementById('Username').value){
+            e.target.parentNode.submit()
+          }
+          else{
+            alert("must enter a user name");
+          }
+         
+         
+        }
+      
+      
+      </script>
+
+</html>

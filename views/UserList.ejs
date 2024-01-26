@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+
+    <form id = form action="/blog/username" method="POST">
+      <input id = user type="hidden" name="user" value = "">
+      <%
+    let bloggersList = bloggersJS
+    let valuesIt = bloggersList.values()
+    for(let n of valuesIt){     
+     %>
+      <li><a name = user   ><%= n.username %></a></li>
+      <%    
+    }
+   %>
+    </form>
+
+<script>
+  const form = document.getElementById('form');
+  form.onclick = post
+
+  function post(e){
+    document.getElementById('user').value = e.target.text
+    e.target.parentNode.parentNode.submit()
+  }
+
+
+</script>
+
+
+
+
+
+
+    
+  </body>
+</html>
